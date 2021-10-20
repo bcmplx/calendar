@@ -5,6 +5,7 @@ import Formulaire from './components/Form';
 import Activities from './components/Activities';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -103,7 +104,9 @@ function App() {
 					setChangingValue={setChangingValue}
 				/>
 			</ContentWrapper>
+			
 		</div>
+		<Footer />
     </div>
   );
 }
@@ -121,7 +124,7 @@ const ContentWrapper = styled.div`
 
 const Wrapper = styled.div`
 	display: flex;
-	
+
 	@media screen and (max-width: 768px){
 		flex-direction: column;
 	}
