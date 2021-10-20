@@ -1,6 +1,71 @@
 .App {
   text-align: center;
+  /* background: url('./assets/images/bg2.jpg'); */
+  height: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  /* position: fixed; */
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  color: wheat;
 }
+
+.bg {
+	background: url('./assets/images/bg2.jpg');
+   /* height: 100%; */
+   min-height: 100vh; 
+  z-index: -1;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.activities {
+  background: url('./assets/images/bg1.jpg');
+}
+
+.appContainer {
+	background: rgba(0,0,0,0.5);
+	margin: 2rem 2rem;
+ 	padding: 2rem;
+	border-radius: 7px;
+
+}
+
+.userActs {
+	display: flex;
+	/* justify-content: center; */
+}
+.activites th:nth-child(2n +1) {
+	padding-right: 4rem;
+}
+
+.userActs input {
+	flex-grow: 1;
+	/* margin-right: -4rem; */
+
+}
+.userActs svg {
+	cursor: pointer;
+    align-self: center;
+	margin: 0 1rem;
+}
+
+.userActs path {
+	pointer-events: none;
+}
+.userActs svg:nth-child(2n +1) {
+    color:red
+}
+.userActs svg:nth-child(2n +0) {
+    color:greenyellow
+}
+
+
 .today {
 	background-color: #009e6c !important;
 	color: #fff;
@@ -9,9 +74,35 @@
 
 td {
 	cursor: pointer;
+	color: wheat;
+
+	
+}
+input:disabled {
+	background: inherit;
+	color: inherit;
+	text-align: inherit;
+	border: none;
+
+}
+input {
+	background: wheat;
+	color: black;
+	text-align: inherit;
+	border: none;
+
 }
 
-.headCalendar td {
+table {
+	border: 2px solid;
+}
+
+.activities tr {
+	background: rgba(0,0,0,0.8);
+    color: wheat;
+}
+
+.activities td {
 	cursor: default;
 }
 

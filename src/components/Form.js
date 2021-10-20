@@ -4,30 +4,37 @@ import Button from 'react-bootstrap/Button'
 import styled from 'styled-components'
 
 const Formulaire = (props) => {
-	// console.log(props)
+
+	
+
+	const handleChange = (e) => {
+		props.setUserValue(e.target.value)
+		props.setChangingValue(false)
+	}
 
 	const Submit = (e) => {
 		e.preventDefault()
-		// console.log(props.activitiesList)
-
+		props.setChangingValue(false)
 		if(e.target[0].value === '') {
 			return
 			
 		}
 		else {
-			// console.log('ici')
 			props.setActivitiesList([
 				...props.activitiesList,
 				{
 					date: props.pickedDate,
-					value: e.target[0].value
+					value: e.target[0].value,
+					id: props.activitiesList.length
 				}
 			])
+			props.setUserValue('')
+			// props.setPickedDate('- - -')
 		}
 
 	}
 	return (
-		<FormContainer className="container w-50 mt-3 p-3 border border-success rounded" active={props.active}>		
+		<FormContainer className="container w-75 mt-3 p-3 border border-success rounded activities" active={props.active}>		
 			<h2>Ajouter un événement</h2>
 			<Form onSubmit={Submit}>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -35,7 +42,7 @@ const Formulaire = (props) => {
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 					<Form.Label>Activité</Form.Label>
-					<Form.Control as="textarea" rows={3} />
+					<Form.Control as="textarea" rows={3} value={props.userValue} onChange={handleChange} required/>
 				</Form.Group>
 				<Button variant="success" type="submit">
 					Submit
@@ -49,5 +56,7 @@ const Formulaire = (props) => {
 export default Formulaire
 
 const FormContainer = styled.div`
-	display: ${({active}) => active ? 'grid' : 'none'}
+	display: ${({active}) => active ? 'grid' : 'none'};
+	background: rgba(0,0,0,0.5);
+
 `

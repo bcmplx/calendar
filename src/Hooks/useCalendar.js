@@ -11,11 +11,8 @@ const monthNamesArray = [
 ];
 
 const useCalendar = (daysShort = daysShortArray, monthNames = monthNamesArray) => {
-	const today2 = new Date();
-	const today = new Date(2023, 0, 1);
-	// console.log(today)
-	const todayFormatted2 = `${today.getDate()}-${today.getMonth() +1}-${today.getFullYear()}`
-	const todayFormatted = `1-1-2023`
+	const today = new Date();
+	const todayFormatted = `${today.getDate()}-${today.getMonth() +1}-${today.getFullYear()}`
 	const daysInWeek = [0, 1, 2, 3, 4, 5, 6];
 	const [selectedDate, setSelectedDate] = useState(today);
 	const selectedMonthLastDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0);
@@ -82,7 +79,6 @@ const useCalendar = (daysShort = daysShortArray, monthNames = monthNamesArray) =
 		daysShort,
 		monthNames,
 		todayFormatted,
-		todayFormatted2,
 		calendarRows,
 		selectedDate,
 		getPrevMonth,

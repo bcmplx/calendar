@@ -9,12 +9,13 @@ const Calendar = (props) => {
 	const { calendarRows, selectedDate, todayFormatted, daysShort, monthNames, getNextMonth, getPrevMonth} = useCalendar()
 
 	const dateClickHandler = date => {
+		props.setChangingValue(false)
 		props.setPickedDate(date)
 		props.setActive(true) 
 	}
 
 	return (
-		<div className="container">
+		<div className="container calendar">
 			<p>Selected Month: {`${monthNames[selectedDate.getMonth()]} - ${selectedDate.getFullYear()}`}</p>
 			
 			<Table striped bordered hover variant="dark">
@@ -32,10 +33,10 @@ const Calendar = (props) => {
 								{cols.map(col => (
 									
 									col.date === todayFormatted 
-									? <td key={col.date} className={`${col.classes} today`} onClick={() => dateClickHandler(col.date)}>
+									? <td key={col.date} className={`${col.classes} calendarTd today`} onClick={() => dateClickHandler(col.date)}>
 										{col.value}
 									</td>
-									: <td key={col.date} className={col.classes} onClick={() => dateClickHandler(col.date)}>
+									: <td key={col.date} className={`${col.classes} calendarTd`} onClick={() => dateClickHandler(col.date)}>
 										{col.value}
 									</td>
 								))}
@@ -46,7 +47,7 @@ const Calendar = (props) => {
 			</Table>
 
 			<Button onClick={getPrevMonth}>Prev</Button>
-			<Button variant="secondary" onClick={getNextMonth}>Next</Button>
+			<Button variant="secondary" onClick={getNextMonth} className="m-1">Next</Button>
 		</div>
 	)
 }
