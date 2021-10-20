@@ -4,7 +4,7 @@ import Calendar from './components/Calendar';
 import Formulaire from './components/Form';
 import Activities from './components/Activities';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
 	
 
 	const handleClick = (prev) => {
+
 		if(prev.target.className === 'calendarTd') {
 			setActive(true)
 		}
@@ -48,14 +49,24 @@ function App() {
 		}
 	}
 
-	useEffect(()=>{
-		console.log('test')
-		
-		let saved = localStorage.getItem('List')
-		let locals = JSON.parse(saved)
-		console.log(locals)
+	
 
-		localStorage.setItem('List', JSON.stringify(activitiesList))
+	useEffect(()=>{
+
+		const fillLocals = () => {
+			let saved = localStorage.getItem('List')
+			let locals = JSON.parse(saved)
+
+			if(activitiesList[0]){
+				localStorage.setItem('List', JSON.stringify(activitiesList))
+			} 
+			if (!activitiesList[0] && locals) {
+				setActivitiesList(locals)
+			}                  
+		}
+
+		fillLocals()
+		
 	}, [activitiesList])
 
   return (
@@ -84,6 +95,7 @@ function App() {
 					/>
 				</Wrapper>
 				<Activities activitiesList={activitiesList} 
+					setActive={setActive}
 					setIdToDelete={setIdToDelete}
 					idToDelete={idToDelete}	
 					setActivitiesList={setActivitiesList}
@@ -109,4 +121,9 @@ const ContentWrapper = styled.div`
 
 const Wrapper = styled.div`
 	display: flex;
+	
+	@media screen and (max-width: 768px){
+		flex-direction: column;
+	}
+
 `

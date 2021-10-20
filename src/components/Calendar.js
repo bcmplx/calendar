@@ -11,7 +11,7 @@ const Calendar = (props) => {
 	const dateClickHandler = date => {
 		props.setChangingValue(false)
 		props.setPickedDate(date)
-		props.setActive(true) 
+		props.setActive((value) => !value) 
 	}
 
 	return (

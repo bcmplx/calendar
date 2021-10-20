@@ -2,7 +2,7 @@
   text-align: center;
   /* background: url('./assets/images/bg2.jpg'); */
   height: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
   background-size: cover;
   /* position: fixed; */
   /* top: 0;
@@ -26,6 +26,7 @@
 }
 .activities {
   background: url('./assets/images/bg1.jpg');
+  font-size: clamp(0.8rem, 2vw, 1.2rem)
 }
 
 .appContainer {
